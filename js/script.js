@@ -17,14 +17,17 @@
 // *************************** YOUR CODE BELOW *******************************
 //******************TEST EARLY AND OFTEN USING console.log() ******************
 //****************** SERIOUSLY TEST USING console.log()!!! ******************
-$(document).ready(function() {
-        //GLOBAL VARIABLES
-        var userChoice;
-        var computerChoice;
-        var winner;
-        var choices = ["ronk","papes","snips"];
-        //FUNCTIONS
+//GLOBAL VARIABLES
+var userChoice;
+var computerChoice;
+var winner;
+var choices = ["ronk","papes","snips"];
+//FUNCTIONS
 
-})
+
 // DOCUMENT READY FUNCTION
-
+$(document).ready(function() {
+        $("#begin").click(function(){
+                userChoice = $("#pick").val();
+        });
+});
