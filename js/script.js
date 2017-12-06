@@ -18,12 +18,12 @@
 //******************TEST EARLY AND OFTEN USING console.log() ******************
 //****************** SERIOUSLY TEST USING console.log()!!! ******************
 $(document).ready(function() {
-//GLOBAL VARIABLES
-
-
-
-//FUNCTIONS
-
+        //GLOBAL VARIABLES
+        var userChoice;
+        var computerChoice;
+        var winner;
+        var choices = ["ronk","papes","snips"];
+        //FUNCTIONS
 
 })
 // DOCUMENT READY FUNCTION
