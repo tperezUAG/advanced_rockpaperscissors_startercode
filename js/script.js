@@ -30,4 +30,13 @@ $(document).ready(function() {
         $("#begin").click(function(){
                 userChoice = $("#pick").val();
         });
+        if (userChoice == "ronk" && computerChoice == "snips" || userChoice == "papes" && computerChoice == "ronk" || userChoice == "snips" && computerChoice == "papes") {
+                $("#player").html();
+                $("#computer").html();
+                $("#result").html("<div class=\"col-lg-12\"><h2>YOU WIN!</h2></div>");
+        } else if (computerChoice == "ronk" && userChoice == "snips" || computerChoice == "papes" && userChoice == "ronk" || computerChoice == "snips" && userChoice == "papes") {
+                $("#player").html();
+                $("#computer").html();
+                $("#result").html("<div class=\"col-lg-12\"><h2>YOU LOSE...</h2></div>");
+        }
 });
