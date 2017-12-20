@@ -25,33 +25,37 @@ var choices = ["ronk","papes","snips"];
 var randomNumber;
 //FUNCTIONS
 function getRandomIntInclusive(min, max) {
-        
         min = Math.ceil(min);
         max = Math.floor(max);
         return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-randomNumber = getRandomIntInclusive(0,2)
 // DOCUMENT READY FUNCTION
 $(document).ready(function() {
         $("#begin").click(function(){
                 userChoice = $("#pick").val();
                 userChoice = userChoice.toLowerCase();
+                console.log(userChoice);
                 //userChoice.toLowerCase() != "ronk" || userChoice.toLowerCase() != "papes" || userChoice.toLowerCase() != "snips"
+                randomNumber = getRandomIntInclusive(0,2);
+                console.log(randomNumber);
                 computerChoice = choices[randomNumber];
+                console.log(computerChoice);
+                if (userChoice != "ronk" && userChoice != "papes" && userChoice != "snips") {
+                        $("#player").html("");
+                        $("#computer").html("");
+                        $("#result").html("<div class=\"col-lg-12\"><h2>Did you type that correctly?</h2><h2>Your options are</h2><h2>\"Ronk\",</h2><h2>\"Papes\",</h2><h2>and \"Snips\".</h2></div>");
+                } else if (userChoice == "ronk" && computerChoice == "snips" || userChoice == "papes" && computerChoice == "ronk" || userChoice == "snips" && computerChoice == "papes") {
+                        $("#player").html("<img src=\"images/" + userChoice + ".png\" /><p>-YOU-</p>");
+                        $("#computer").html("<img src=\"images/" + computerChoice + ".png\" /><p>-COMPUTER-</p>");
+                        $("#result").html("<div class=\"col-lg-12\"><h2>YOU WIN!</h2></div>");
+                } else if (computerChoice == "ronk" && userChoice == "snips" || computerChoice == "papes" && userChoice == "ronk" || computerChoice == "snips" && userChoice == "papes") {
+                        $("#player").html("<img src=\"images/" + userChoice + ".png\" /><p>-YOU-</p>");
+                        $("#computer").html("<img src=\"images/" + computerChoice + ".png\" /><p>-COMPUTER-</p>");
+                        $("#result").html("<div class=\"col-lg-12\"><h2>YOU LOSE...</h2></div>");
+                } else if (userChoice == computerChoice) {
+                        $("#player").html("<img src=\"images/" + userChoice + ".png\" /><p>-YOU-</p>");
+                        $("#computer").html("<img src=\"images/" + computerChoice + ".png\" /><p>-COMPUTER-</p>");
+                        $("#result").html("<div class=\"col-lg-12\"><h2>Tie.</h2></div>");
+                }
         });
-        if (userChoice != "ronk" || userChoice != "papes" || userChoice != "snips") {
-                $("#player").html();
-                $("#computer").html();
-                $("#result").html("<div class=\"col-lg-12\"><h2>That isn't a choice.</h2></div>");
-        } else if (userChoice == "ronk" && computerChoice == "snips" || userChoice == "papes" && computerChoice == "ronk" || userChoice == "snips" && computerChoice == "papes") {
-                $("#player").html();
-                $("#computer").html();
-                $("#result").html("<div class=\"col-lg-12\"><h2>YOU WIN!</h2></div>");
-        } else if (computerChoice == "ronk" && userChoice == "snips" || computerChoice == "papes" && userChoice == "ronk" || computerChoice == "snips" && userChoice == "papes") {
-                $("#player").html();
-                $("#computer").html();
-                $("#result").html("<div class=\"col-lg-12\"><h2>YOU LOSE...</h2></div>");
-        } else if (userChoice == computerChoice) {
-                $("#result").html("<div class=\"col-lg-12\"><h2>Tie.</h2></div>");
-        }
 });
