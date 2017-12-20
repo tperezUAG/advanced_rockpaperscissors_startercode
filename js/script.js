@@ -22,15 +22,28 @@ var userChoice;
 var computerChoice;
 var winner;
 var choices = ["ronk","papes","snips"];
+var randomNumber;
 //FUNCTIONS
-
-
+function getRandomIntInclusive(min, max) {
+        
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+randomNumber = getRandomIntInclusive(0,2)
 // DOCUMENT READY FUNCTION
 $(document).ready(function() {
         $("#begin").click(function(){
                 userChoice = $("#pick").val();
+                userChoice = userChoice.toLowerCase();
+                //userChoice.toLowerCase() != "ronk" || userChoice.toLowerCase() != "papes" || userChoice.toLowerCase() != "snips"
+                computerChoice = choices[randomNumber];
         });
-        if (userChoice == "ronk" && computerChoice == "snips" || userChoice == "papes" && computerChoice == "ronk" || userChoice == "snips" && computerChoice == "papes") {
+        if (userChoice != "ronk" || userChoice != "papes" || userChoice != "snips") {
+                $("#player").html();
+                $("#computer").html();
+                $("#result").html("<div class=\"col-lg-12\"><h2>That isn't a choice.</h2></div>");
+        } else if (userChoice == "ronk" && computerChoice == "snips" || userChoice == "papes" && computerChoice == "ronk" || userChoice == "snips" && computerChoice == "papes") {
                 $("#player").html();
                 $("#computer").html();
                 $("#result").html("<div class=\"col-lg-12\"><h2>YOU WIN!</h2></div>");
@@ -38,5 +51,7 @@ $(document).ready(function() {
                 $("#player").html();
                 $("#computer").html();
                 $("#result").html("<div class=\"col-lg-12\"><h2>YOU LOSE...</h2></div>");
+        } else if (userChoice == computerChoice) {
+                $("#result").html("<div class=\"col-lg-12\"><h2>Tie.</h2></div>");
         }
 });
